@@ -1,35 +1,90 @@
 ---
 title: "Public Health Class with R Markdown"
-author: "Mohd Azmi"
-date: "11/10/2020"
-output: ioslides_presentation
+subtitle: "subtitle here"
+author: "Dr Mohd Azmi (MBBS, MPH)"
+institute: "Universiti Sains Malaysia, DrPH (Epidemiology) Candidate"
+output:
+  beamer_presentation:
+    theme: "AnnArbor"
+    colortheme: "dolphin"
+    fonttheme: "structurebold"
+    fig_width: 7
+    fig_height: 6
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
 ```
 
-## R Markdown
+## Target Audience
 
-This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Aim: Introductory
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+- Teaching Staff
+- Student
 
-## Slide with Bullets
+Disclaimer
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
+- Very simple slide
+  - short learning curve
+- Be creative!
+- Try, try, try
 
-## Slide with R Output
 
-```{r cars, echo = TRUE}
-summary(cars)
+## Motivation
+
+- Statistic and Public Health
+- Multiple output file for same purpose
+
+## Teaching Statistic
+
+- fast, reproducible
+
+### <b>
+x <- runif(100, 5, 10)
+
+y <- sample(5:10, 100, replace = T)
+
+y2 <- (x+y/2) 
+
+fake <- data.frame(x,y,y2) 
+
+with(fake, plot(x,y2))
+</b>
+
+
+## 
+
+```{r}
+x <- runif(100, 5, 10)
+y <- sample(5:10, 100, replace = T)
+y2 <- (x+y/2)
+fake <- data.frame(x,y,y2)
+with(fake, plot(x,y2))
 ```
 
-## Slide with Plot
+## Tidyverse
 
-```{r pressure}
-plot(pressure)
+- example using tidyverse
+
+### <b>
+
+tibble(x=runif(100, 5, 10),
+
+y=sample(5:10, 100, replace = T),
+
+y2 = (x+y/2)) %>%
+
+ggplot(aes(x,y2)) + geom_point()
+</b>
+
+##
+
+```{r}
+tibble(x=runif(100, 5, 10), y=sample(5:10, 100, replace = T), y2 = (x+y/2)) %>% 
+  ggplot(aes(x,y2)) + geom_point()
 ```
+
+
 
