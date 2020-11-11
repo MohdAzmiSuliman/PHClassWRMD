@@ -14,7 +14,8 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-library(tidyverse)
+library(pacman)
+p_load(tidyverse, Gmisc, grid)
 ```
 
 ## Target Audience
@@ -41,7 +42,7 @@ Disclaimer
 
 - fast, reproducible
 
-### <b>
+###
 x <- runif(100, 5, 10)
 
 y <- sample(5:10, 100, replace = T)
@@ -51,7 +52,7 @@ y2 <- (x+y/2)
 fake <- data.frame(x,y,y2) 
 
 with(fake, plot(x,y2))
-</b>
+
 
 
 ## 
@@ -68,16 +69,14 @@ with(fake, plot(x,y2))
 
 - example using tidyverse
 
-### <b>
+### 
 
-tibble(x=runif(100, 5, 10),
+tibble(x=runif(100, 5, 10), y2=(x+sample(5:10, 100, replace = T))/2)
 
-y=sample(5:10, 100, replace = T),
-
-y2 = (x+y/2)) %>%
+    %>%
 
 ggplot(aes(x,y2)) + geom_point()
-</b>
+
 
 ##
 
@@ -90,5 +89,103 @@ tibble(x=runif(100, 5, 10), y=sample(5:10, 100, replace = T), y2 = (x+y/2)) %>%
 
 ## One file, various output
 
-Original RStudio
+Rmarkdown file
 
+![rmarkdown file](example rstudio.png)
+
+
+## One file, various output
+
+HTML output
+
+![html output](example html.png)
+
+
+## One file, various output
+
+pdf output
+
+![pdf output](example pdf.png)
+
+
+## Generate simple chart directly
+
+- Gmisc and grid package
+
+source: https://cran.r-project.org/web/packages/Gmisc/vignettes/Grid-based_flowcharts.html
+
+###
+
+<font size = "1">grid.newpage()</font>
+
+exposure <-
+  "Exposure
+  (e.g. Coffee)"
+expbox <- boxGrob(exposure, x=.2, y=.8)
+
+outcome <-
+  "Outcome
+  (e.g. Lung Ca)"
+outbox <- boxGrob(outcome, x=.8, y=.8)
+
+confounder <-
+  "Confounder
+  (e.g. Smoking)"
+confbox <- boxGrob(confounder, x=.5, y=.2)
+
+connectGrob(expbox, outbox, "horizontal")
+connectGrob(expbox, confbox, "vertical")
+connectGrob(confbox, expbox, "vertical")
+connectGrob(confbox, outbox, "vertical")
+
+expbox
+outbox
+confbox
+
+</b>
+
+## Generate simple chart directly
+
+```{r}
+library(Gmisc)
+library(grid)
+grid.newpage()
+exposure <-
+  "Exposure
+  (e.g. Coffee)"
+expbox <- boxGrob(exposure, x=.2, y=.8)
+outcome <-
+  "Outcome
+  (e.g. Lung Ca)"
+outbox <- boxGrob(outcome, x=.8, y=.8)
+confounder <-
+  "Confounder
+  (e.g. Smoking)"
+confbox <- boxGrob(confounder, x=.5, y=.2)
+connectGrob(expbox, outbox, "horizontal")
+connectGrob(expbox, confbox, "vertical")
+connectGrob(confbox, expbox, "vertical")
+connectGrob(confbox, outbox, "vertical")
+
+expbox
+outbox
+confbox
+```
+
+## Generate simple chart directly
+
+Other option - ggplot
+
+source: https://rpubs.com/phiggins/461686
+
+
+## Student
+
+- of course!
+  - reproducible
+
+
+## Submit assignment
+
+- RPubs
+- 
