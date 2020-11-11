@@ -1,12 +1,22 @@
 ---
-title: "Test PDF"
+title: "Note for Class"
 author: "Azmi"
 date: "11/11/2020"
-output: pdf_document
+output:
+  pdf_document:
+    toc: yes
+  html_document:
+    toc: yes
+    toc_float: yes
+    code_folding: hide
+    df_print: paged
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(Gmisc, quietly = T)
+library(grid)
+library(tidyverse)
 ```
 
 ## R Markdown
@@ -28,3 +38,34 @@ plot(pressure)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+## Example - Mediation and confounder
+
+Among important concept in disease causation is bias and confounding. Confounders can be due to a noncausal association between a given exposure and an outcome observed as a result of the influence of third variable
+
+
+```{r}
+grid.newpage()
+exposure <-
+  "Exposure
+  (e.g. Coffee)"
+expbox <- boxGrob(exposure, x=.2, y=.8)
+outcome <-
+  "Outcome
+  (e.g. Lung Ca)"
+outbox <- boxGrob(outcome, x=.8, y=.8)
+confounder <-
+  "Confounder
+  (e.g. Smoking)"
+confbox <- boxGrob(confounder, x=.5, y=.2)
+connectGrob(expbox, outbox, "horizontal")
+connectGrob(expbox, confbox, "vertical")
+connectGrob(confbox, expbox, "vertical")
+connectGrob(confbox, outbox, "vertical")
+
+expbox
+outbox
+confbox
+```
+

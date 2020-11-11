@@ -88,3 +88,7 @@ tibble(x=runif(100, 5, 10), y=sample(5:10, 100, replace = T), y2 = (x+y/2)) %>%
 
 
 
+## One file, various output
+
+Original RStudio
+
