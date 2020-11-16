@@ -1,15 +1,10 @@
 ---
 title: "Public Health Class with R Markdown"
-subtitle: "subtitle here"
-author: "Dr Mohd Azmi (MBBS, MPH)"
-institute: "Universiti Sains Malaysia, DrPH (Epidemiology) Candidate"
+author: "Universiti Sains Malaysia, DrPH (Epidemiology) Candidate"
+subtitle: "Dr Mohd Azmi (MBBS, MPH)"
 output:
-  beamer_presentation:
-    theme: "AnnArbor"
-    colortheme: "dolphin"
-    fonttheme: "structurebold"
-    fig_width: 7
-    fig_height: 6
+  powerpoint_presentation:
+    reference_doc: slides__template.pptx
 ---
 
 ```{r setup, include=FALSE}
@@ -42,7 +37,7 @@ Disclaimer
 
 - fast, reproducible
 
-###
+
 x <- runif(100, 5, 10)
 
 y <- sample(5:10, 100, replace = T)
@@ -69,13 +64,10 @@ with(fake, plot(x,y2))
 
 - example using tidyverse
 
-### 
-
 tibble(x=runif(100, 5, 10), y2=(x+sample(5:10, 100, replace = T))/2)
 
-    %>%
 
-ggplot(aes(x,y2)) + geom_point()
+%>% ggplot(aes(x,y2)) + geom_point()
 
 
 ##
@@ -89,62 +81,24 @@ tibble(x=runif(100, 5, 10), y=sample(5:10, 100, replace = T), y2 = (x+y/2)) %>%
 
 ## One file, various output
 
-Rmarkdown file
-
 ![rmarkdown file](example rstudio.png)
 
 
 ## One file, various output
-
-HTML output
 
 ![html output](example html.png)
 
 
 ## One file, various output
 
-pdf output
-
 ![pdf output](example pdf.png)
 
 
 ## Generate simple chart directly
 
-- Gmisc and grid package
+- Gmisc and grid package 
+- ggplot (https://rpubs.com/phiggins/461686)
 
-source: https://cran.r-project.org/web/packages/Gmisc/vignettes/Grid-based_flowcharts.html
-
-###
-
-<font size = "1">grid.newpage()</font>
-
-exposure <-
-  "Exposure
-  (e.g. Coffee)"
-expbox <- boxGrob(exposure, x=.2, y=.8)
-
-outcome <-
-  "Outcome
-  (e.g. Lung Ca)"
-outbox <- boxGrob(outcome, x=.8, y=.8)
-
-confounder <-
-  "Confounder
-  (e.g. Smoking)"
-confbox <- boxGrob(confounder, x=.5, y=.2)
-
-connectGrob(expbox, outbox, "horizontal")
-connectGrob(expbox, confbox, "vertical")
-connectGrob(confbox, expbox, "vertical")
-connectGrob(confbox, outbox, "vertical")
-
-expbox
-outbox
-confbox
-
-</b>
-
-## Generate simple chart directly
 
 ```{r}
 library(Gmisc)
@@ -172,20 +126,61 @@ outbox
 confbox
 ```
 
-## Generate simple chart directly
-
-Other option - ggplot
-
-source: https://rpubs.com/phiggins/461686
-
 
 ## Student
 
-- of course!
-  - reproducible
+Of course!
+
+- Main reason: reproducible
 
 
-## Submit assignment
+## Student Assigment
 
-- RPubs
-- 
+- pdf
+- html
+
+## Student Assigment
+
+![pdf output](example assignment pdf.png)
+
+## Student Assigment
+
+![html output](example assignment html.png)
+
+## Assignment Submission
+
+- manual
+- publish
+  - RPubs
+  - RStudio Connect
+
+## Assignment Submission
+
+![submit manual](submit emel.png)
+
+## Assignment Submission
+
+![](submit publish.png)
+
+## Assignment Submission
+
+![](submit publish2.png)
+
+## Assignment Submission
+
+![](submit publish3.png)
+
+## Closing
+
+Various Source
+
+- R Markdown: The Definitive Guide https://bookdown.org/yihui/rmarkdown/
+- bookdown: Authoring Books and Technical Documents with R Markdown https://bookdown.org/yihui/bookdown/
+- pdf theme
+  - rmdformat
+  - prettydoc
+- presentation
+  - beamer
+  - ioslide
+  - slidy
+  - rmdshower
