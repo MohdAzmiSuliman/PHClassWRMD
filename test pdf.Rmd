@@ -3,7 +3,6 @@ title: "Note for Class"
 author: "Azmi"
 date: "11/11/2020"
 output:
-  beamer_presentation: default
   html_document:
     toc: yes
     toc_float: yes

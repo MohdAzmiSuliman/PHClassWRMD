@@ -30,9 +30,16 @@ Disclaimer
 
 ## Motivation
 
-- Statistic and Public Health
+- Statistic and Epidemiology classess
 - Multiple output file for same purpose
 
+## MPH and Medical Statistic
+
+![USM MPH Sturcture](USM MPH structure.png)
+
+## Medical Statistic with SPSS
+
+![](spss logistic regression gui.png)
 ## Teaching Statistic
 
 - fast, reproducible
@@ -78,6 +85,24 @@ tibble(x=runif(100, 5, 10), y=sample(5:10, 100, replace = T), y2 = (x+y/2)) %>%
 ```
 
 
+## Medical Statistic with SPSS
+
+![](spss logistic regression example.png)
+
+## Medical Statistic with SPSS
+
+![](copy to word example.png)
+
+
+
+## What is R Markdown
+
+- Markdown: lightweight markup language
+  - can add formating element to plaintext text document
+- R Markdown: "provide framework of authoring framework for data science..."
+  - "save and execute code"
+  - "generate high quality reports that can be shared with audience"
+
 
 ## One file, various output
 
@@ -92,6 +117,7 @@ tibble(x=runif(100, 5, 10), y=sample(5:10, 100, replace = T), y2 = (x+y/2)) %>%
 ## One file, various output
 
 ![pdf output](example pdf.png)
+
 
 
 ## Generate simple chart directly
