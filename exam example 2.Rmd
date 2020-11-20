@@ -1,0 +1,87 @@
+---
+title: "Exam"
+author: "Mohd Azmi"
+date: "11/20/2020"
+output:
+  word_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(pacman)
+p_load(tidyverse, haven, broom, knitr)
+```
+
+
+```{r}
+workds <- read_sav("AFPJ SPSS.sav") %>% mutate_if(is.labelled, ~(as_factor(.)))
+```
+
+
+```{r}
+fit1 <- glm(GROUP ~ GENDER, family = "binomial", workds)
+summary(fit1)
+
+tidy(fit1, conf.int = T)
+
+tidy(fit1, conf.int = T) %>% 
+  mutate(OR = exp(estimate),
+         llci = exp(conf.low),
+         ulci = exp(conf.high)) %>% 
+  select(variable = term, coef = estimate, OR, llci, ulci, p.value)
+```
+
+
+```{r}
+fit2 <- glm(GROUP ~ AGE, family = "binomial", workds)
+
+tidy(fit2, conf.int = T) %>% 
+  mutate(OR = exp(estimate),
+         llci = exp(conf.low),
+         ulci = exp(conf.high)) %>% 
+  select(variable = term, coef = estimate, OR, llci, ulci, p.value)
+```
+
+
+```{r}
+fit3 <- glm(GROUP ~ BW2, family = "binomial", workds)
+
+tidy(fit3, conf.int = T) %>% 
+  mutate(OR = exp(estimate),
+         llci = exp(conf.low),
+         ulci = exp(conf.high)) %>% 
+  select(variable = term, coef = estimate, OR, llci, ulci, p.value)
+```
+
+```{r}
+gender_fit <- tidy(fit1, conf.int = T) %>% 
+  mutate(OR = exp(estimate),
+         llci = exp(conf.low),
+         ulci = exp(conf.high)) %>% 
+  select(variable = term, coef = estimate, OR, llci, ulci, p.value)
+
+age_fit <- tidy(fit2, conf.int = T) %>% 
+  mutate(OR = exp(estimate),
+         llci = exp(conf.low),
+         ulci = exp(conf.high)) %>% 
+  select(variable = term, coef = estimate, OR, llci, ulci, p.value)
+
+bw_fit <- tidy(fit3, conf.int = T) %>% 
+  mutate(OR = exp(estimate),
+         llci = exp(conf.low),
+         ulci = exp(conf.high)) %>% 
+  select(variable = term, coef = estimate, OR, llci, ulci, p.value)
+
+bind_rows(gender_fit, age_fit, bw_fit) %>% 
+  filter(variable != "(Intercept)") %>% 
+  kable(digits = 3)
+
+```
+
+
+
+

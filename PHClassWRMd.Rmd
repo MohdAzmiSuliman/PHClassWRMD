@@ -15,7 +15,7 @@ p_load(tidyverse, Gmisc, grid)
 
 ## Target Audience
 
-Aim: Introductory
+Aim: Experience sharing
 
 - Teaching Staff
 - Student
@@ -40,9 +40,14 @@ Disclaimer
 ## Medical Statistic with SPSS
 
 ![](spss logistic regression gui.png)
-## Teaching Statistic
 
-- fast, reproducible
+## Why R in the first place?
+
+- fast
+- reproducible
+
+
+## Teaching Statistic
 
 
 x <- runif(100, 5, 10)
@@ -69,8 +74,6 @@ with(fake, plot(x,y2))
 
 ## Tidyverse
 
-- example using tidyverse
-
 tibble(x=runif(100, 5, 10), y2=(x+sample(5:10, 100, replace = T))/2)
 
 
@@ -85,11 +88,11 @@ tibble(x=runif(100, 5, 10), y=sample(5:10, 100, replace = T), y2 = (x+y/2)) %>%
 ```
 
 
-## Medical Statistic with SPSS
+## SPSS Output
 
 ![](spss logistic regression example.png)
 
-## Medical Statistic with SPSS
+## Copying SPSS output
 
 ![](copy to word example.png)
 
@@ -157,10 +160,12 @@ confbox
 
 Of course!
 
-- Main reason: reproducible
+Main reason: reproducible
 
 
 ## Student Assigment
+
+Report output
 
 - pdf
 - html
@@ -175,8 +180,8 @@ Of course!
 
 ## Assignment Submission
 
-- manual
-- publish
+- Manual
+- Publish
   - RPubs
   - RStudio Connect
 
